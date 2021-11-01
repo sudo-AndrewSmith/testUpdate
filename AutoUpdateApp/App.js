@@ -1,34 +1,46 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import codePush from 'react-native-code-push';
 
+let codePushOptions = {checkFrequency: codePush.CheckFrequency.MANUAL};
+
 let App = () => {
+  const handleCheckUpdates = () => {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE,
+    });
+  };
+
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>pizda</Text>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.button} onPress={handleCheckUpdates}>
+          <Text style={styles.text}>Check for updates bigom</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-App = codePush(App);
+App = codePush(codePushOptions)(App);
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  button: {
+    backgroundColor: 'green',
+    borderRadius: 10,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  text: {
+    margin: 10,
+    fontSize: 20,
+    color: '#fff',
   },
 });
 
