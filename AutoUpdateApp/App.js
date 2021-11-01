@@ -13,8 +13,9 @@ let App = () => {
   useEffect(() => {
     codePush.checkForUpdate().then(update => {
       if (!update) {
-        setStatus('обновлено!');
+        setStatus('Нету апдейта!');
       } else {
+        console.log('ff');
         setStatus('Есть обнова!');
       }
     });
@@ -30,7 +31,7 @@ let App = () => {
   const handleCheckUpdates = () => {
     codePush.checkForUpdate().then(update => {
       if (!update) {
-        setStatus('обновлено!');
+        setStatus('Нету апдейта!');
       } else {
         setStatus('Есть обнова!');
       }
@@ -39,7 +40,9 @@ let App = () => {
 
   return (
     <View style={{flex: 1}}>
-      <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>pizda</Text>
+      <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
+        Testing
+      </Text>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.buttonCheck}
