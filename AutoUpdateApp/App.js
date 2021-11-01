@@ -16,7 +16,6 @@ let App = () => {
       if (!update) {
         setStatus('Нету апдейта!');
       } else {
-        console.log('ff');
         setStatus('Есть обнова!');
       }
     });
@@ -46,7 +45,7 @@ let App = () => {
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
-        ROBE!!!
+        GOVNA KUSOK
       </Text>
       <View style={styles.container}>
         <Button
