@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
 import codePush from 'react-native-code-push';
 
@@ -46,12 +46,12 @@ let App = () => {
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
-        Testing
+        ROBE!!!
       </Text>
       <View style={styles.container}>
         <Button
           color="green"
-          title="CheckForUpdates"
+          title="Check For Updates"
           onFocus={handleFocus}
           onPress={handleCheckUpdates}
         />
