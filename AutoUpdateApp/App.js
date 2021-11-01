@@ -19,7 +19,7 @@ let App = () => {
       }
     });
   }),
-    [codePush];
+    [codePush, setStatus];
 
   const handleCheckUpdates = () => {
     codePush.sync({
