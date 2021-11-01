@@ -16,7 +16,6 @@ let App = () => {
       if (!update) {
         setStatus('Нету апдейта!');
       } else {
-        console.log('ff');
         setStatus('Есть обнова!');
       }
     });
