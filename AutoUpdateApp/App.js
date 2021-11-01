@@ -9,6 +9,7 @@ let codePushOptions = {
 
 let App = () => {
   const [status, setStatus] = useState('');
+  const [isFocused, setSetFocused] = useState(false);
 
   useEffect(() => {
     codePush.checkForUpdate().then(update => {
@@ -38,6 +39,10 @@ let App = () => {
     });
   };
 
+  const handleFocus = () => {
+    setSetFocused(!isFocused);
+  };
+
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
@@ -45,7 +50,11 @@ let App = () => {
       </Text>
       <View style={styles.container}>
         <TouchableOpacity
-          style={styles.buttonCheck}
+          onFocus={handleFocus}
+          style={[
+            styles.buttonCheck,
+            {backgroundColor: isFocused ? 'gray' : 'green'},
+          ]}
           onPress={handleCheckUpdates}>
           <Text style={styles.text}>CheckForUpdates</Text>
         </TouchableOpacity>
