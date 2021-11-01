@@ -21,23 +21,33 @@ let App = () => {
   }),
     [codePush, setStatus];
 
-  const handleCheckUpdates = () => {
+  const handleUpdate = () => {
     codePush.sync({
       updateDialog: true,
       installMode: codePush.InstallMode.IMMEDIATE,
     });
   };
-
-  useEffect(() => {
-    codePush.notifyAppReady(message => console.log(message));
-  }, []);
+  const handleCheckUpdates = () => {
+    codePush.checkForUpdate().then(update => {
+      if (!update) {
+        setStatus('обновлено!');
+      } else {
+        setStatus('Есть обнова!');
+      }
+    });
+  };
 
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>pizda</Text>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={handleCheckUpdates}>
-          <Text style={styles.text}>Check for updates bigom</Text>
+        <TouchableOpacity
+          style={styles.buttonCheck}
+          onPress={handleCheckUpdates}>
+          <Text style={styles.text}>CheckForUpdates</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonUpdate} onPress={handleUpdate}>
+          <Text style={styles.text}>Install</Text>
         </TouchableOpacity>
         <Text style={styles.textStatus}>{status}</Text>
       </View>
@@ -53,8 +63,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button: {
+  buttonCheck: {
+    margin: 10,
     backgroundColor: 'green',
+    borderRadius: 10,
+  },
+  buttonUpdate: {
+    margin: 10,
+    backgroundColor: '#000',
     borderRadius: 10,
   },
   text: {
