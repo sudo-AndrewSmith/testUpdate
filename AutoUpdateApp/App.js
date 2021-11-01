@@ -45,7 +45,7 @@ let App = () => {
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
-        16:03 Update
+        SHLYAPA
       </Text>
       <View style={styles.container}>
         <Button
