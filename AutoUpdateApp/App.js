@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 import codePush from 'react-native-code-push';
 
@@ -49,18 +49,19 @@ let App = () => {
         Testing
       </Text>
       <View style={styles.container}>
-        <TouchableOpacity
+        <Button
+          color="green"
+          title="CheckForUpdates"
           onFocus={handleFocus}
-          style={[
-            styles.buttonCheck,
-            {backgroundColor: isFocused ? 'gray' : 'green'},
-          ]}
-          onPress={handleCheckUpdates}>
-          <Text style={styles.text}>CheckForUpdates</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonUpdate} onPress={handleUpdate}>
-          <Text style={styles.text}>Install</Text>
-        </TouchableOpacity>
+          onPress={handleCheckUpdates}
+        />
+        <View style={styles.margin} />
+        <Button
+          color="#000"
+          style={styles.buttonUpdate}
+          onPress={handleUpdate}
+          title="Install"
+        />
         <Text style={styles.textStatus}>{status}</Text>
       </View>
     </View>
@@ -75,15 +76,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonCheck: {
+  margin: {
     margin: 10,
-    backgroundColor: 'green',
-    borderRadius: 10,
-  },
-  buttonUpdate: {
-    margin: 10,
-    backgroundColor: '#000',
-    borderRadius: 10,
   },
   text: {
     margin: 10,
