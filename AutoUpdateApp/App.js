@@ -19,8 +19,8 @@ let App = () => {
         setStatus('Есть обнова!');
       }
     });
-  }),
-    [codePush, setStatus];
+  }, [codePush, setStatus])
+    
 
   const handleUpdate = () => {
     codePush.sync({
