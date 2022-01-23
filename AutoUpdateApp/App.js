@@ -3,13 +3,10 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 
 import codePush from 'react-native-code-push';
 
-let codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.MANUAL,
-};
+
 
 let App = () => {
   const [status, setStatus] = useState('');
-  const [isFocused, setSetFocused] = useState(false);
 
   useEffect(() => {
     codePush.checkForUpdate().then(update => {
@@ -28,6 +25,7 @@ let App = () => {
       installMode: codePush.InstallMode.IMMEDIATE,
     });
   };
+  
   const handleCheckUpdates = () => {
     codePush.checkForUpdate().then(update => {
       if (!update) {
@@ -38,10 +36,6 @@ let App = () => {
     });
   };
 
-  const handleFocus = () => {
-    setSetFocused(!isFocused);
-  };
-
   return (
     <View style={{flex: 1}}>
       <Text style={{textAlign: 'center', fontSize: 50, margin: 10}}>
@@ -49,12 +43,12 @@ let App = () => {
       </Text>
       <View style={styles.container}>
         <Button
+          style={styles.marginBottom}
           color="green"
           title="Check For Updates"
-          onFocus={handleFocus}
           onPress={handleCheckUpdates}
         />
-        <View style={styles.margin} />
+      
         <Button
           color="#000"
           style={styles.buttonUpdate}
@@ -67,6 +61,10 @@ let App = () => {
   );
 };
 
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.MANUAL,
+};
+
 App = codePush(codePushOptions)(App);
 
 const styles = StyleSheet.create({
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  margin: {
+  marginBottom: {
     margin: 10,
   },
   text: {
